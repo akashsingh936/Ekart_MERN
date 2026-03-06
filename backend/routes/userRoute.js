@@ -18,7 +18,7 @@ router.post("/verify-otp/:email",verifyOTP)
 router.post("/change-password/:email", ChangePassword)
 router.get("/all-user",isAuthenticated,isAdmin, allUsers)
 router.get("/get-user/:userId", getUSerById)
-router.put("/update/:id", isAuthenticated, singleUpload, uploadUser)
+router.put("/update/:id", isAuthenticated, singleUpload, uploadUser)               
 
 
 

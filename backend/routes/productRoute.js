@@ -1,14 +1,17 @@
 import express from "express"
-import { allUsers, ChangePassword, forgotPassword, getUSerById, login, logout, register, reVerify, uploadUser, verify, verifyOTP } from "../controllers/userController.js"
+import { addProduct, deleteProduct, getAllProduct, updateProduct } from "../controllers/productController.js"
 import { isAdmin, isAuthenticated } from "../middleware/isAuthenticated.js"
-import { singleUpload } from "../middleware/multer.js"
-// import { verify } from "jsonwebtoken"
+import { multipleUpload } from "../middleware/multer.js"
+ 
 
 
 const router = express.Router()
 
 
-router.post("/register", register)
+router.post("/add", isAuthenticated, isAdmin, multipleUpload, addProduct) 
+router.get("/getAllProducts", getAllProduct) 
+router.delete("/delete/:product", isAuthenticated, isAdmin, deleteProduct)
+router.put("/update/:productId", isAuthenticated, isAdmin, multipleUpload, updateProduct)
 
 
  
